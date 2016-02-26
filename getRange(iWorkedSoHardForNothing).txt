@@ -1,0 +1,29 @@
+public static double[] getRange(double a, double b, double c, double max, double min) {
+		System.out.println("Please input a max and min so that the range can be found\n");
+		Scanner in = new Scanner(System.in);
+		double mx = 5d;
+		double mn = 0d;
+		try {
+			mx = in.nextDouble();
+			mn = in.nextDouble();
+			if((mx-mn)<0) {
+				throw new ArithmeticException();
+			}
+		} catch(InputMismatchException badin) {
+			System.out.println("You are a dick");
+		} catch(ArithmeticException bignum) {
+			System.out.println("Maximum, in case you're an idiot, is bigger than minimum");
+		}
+		@SuppressWarnings("unused")
+		double[] range = new double[(int) Math.floor(mx-mn)+1];
+		in.close();
+		range = getRange(a, b, c, mx, mn);
+		double[] strg = new double[(int) Math.floor(max-min)+1];
+		for(int i = (int) min; i<max; i++) {
+			double calc = a * Math.pow(i, 2) + b * i + c;
+			System.out.println(calc);
+			strg[i] = calc;
+		}
+		System.out.print(strg);
+		return strg;
+	}
